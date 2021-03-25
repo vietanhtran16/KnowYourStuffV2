@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowYourStuffCore", "KnowYourStuffCore\KnowYourStuffCore.csproj", "{0978294C-918F-438B-B788-47F333D9B3F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowYourStuffWebApi", "KnowYourStuffWebApi\KnowYourStuffWebApi.csproj", "{C823BD73-5397-4386-B6F9-93A46A2C6A56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{0978294C-918F-438B-B788-47F333D9B3F7}.Release|x64.Build.0 = Release|Any CPU
 		{0978294C-918F-438B-B788-47F333D9B3F7}.Release|x86.ActiveCfg = Release|Any CPU
 		{0978294C-918F-438B-B788-47F333D9B3F7}.Release|x86.Build.0 = Release|Any CPU
+		{C823BD73-5397-4386-B6F9-93A46A2C6A56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C823BD73-5397-4386-B6F9-93A46A2C6A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C823BD73-5397-4386-B6F9-93A46A2C6A56}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C823BD73-5397-4386-B6F9-93A46A2C6A56}.Debug|x64.Build.0 = Debug|Any CPU
+		{C823BD73-5397-4386-B6F9-93A46A2C6A56}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C823BD73-5397-4386-B6F9-93A46A2C6A56}.Debug|x86.Build.0 = Debug|Any CPU
+		{C823BD73-5397-4386-B6F9-93A46A2C6A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C823BD73-5397-4386-B6F9-93A46A2C6A56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C823BD73-5397-4386-B6F9-93A46A2C6A56}.Release|x64.ActiveCfg = Release|Any CPU
+		{C823BD73-5397-4386-B6F9-93A46A2C6A56}.Release|x64.Build.0 = Release|Any CPU
+		{C823BD73-5397-4386-B6F9-93A46A2C6A56}.Release|x86.ActiveCfg = Release|Any CPU
+		{C823BD73-5397-4386-B6F9-93A46A2C6A56}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
