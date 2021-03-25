@@ -1,9 +1,10 @@
-using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace KnowYourStuffCore.Dtos
 {
-    public class NewPlatform
+    public class Platform
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         
         public string Description { get; set; }

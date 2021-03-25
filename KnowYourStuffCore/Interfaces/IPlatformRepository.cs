@@ -4,6 +4,6 @@ namespace KnowYourStuffCore
 {
     public interface IPlatformRepository
     {
-        PlatformRead CreatePlatform(NewPlatform newPlatform);
+        Platform CreatePlatform(Platform newPlatform);
     }
 }
