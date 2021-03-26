@@ -7,5 +7,10 @@ namespace KnowYourStuffCore.Dtos
         public string Name { get; set; }
         
         public string Description { get; set; }
+
+        public Platform ToPlatform()
+        {
+            return new Platform(Name, Description);
+        }
     }
 }

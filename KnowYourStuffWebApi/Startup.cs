@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KnowYourStuffCore.DataAccess;
+using KnowYourStuffCore.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +30,7 @@ namespace KnowYourStuffWebApi
         {
 
             services.AddControllers();
+            services.AddScoped<IPlatformRepository, InMemoryPlatformRepo>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "KnowYourStuffWebApi", Version = "v1" });

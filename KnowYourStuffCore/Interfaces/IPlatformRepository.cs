@@ -1,6 +1,6 @@
 using KnowYourStuffCore.Dtos;
 
-namespace KnowYourStuffCore
+namespace KnowYourStuffCore.Interfaces
 {
     public interface IPlatformRepository
     {

@@ -4,8 +4,15 @@ namespace KnowYourStuffCore.Dtos
 {
     public class PlatformRead
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public DateTime LastModified { get; set; }
+        public PlatformRead(Guid id, string name, string description)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+        }
+
+        public Guid Id { get; }
+        public string Name { get; }
+        public string Description { get; }
     }
 }
