@@ -1,6 +1,6 @@
 using System;
 
-namespace KnowYourStuffCore.Dtos
+namespace KnowYourStuffCore.Models
 {
     public class Platform
     {

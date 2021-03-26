@@ -1,4 +1,5 @@
 using KnowYourStuffCore.Dtos;
+using KnowYourStuffCore.Models;
 
 namespace KnowYourStuffCore.Interfaces
 {

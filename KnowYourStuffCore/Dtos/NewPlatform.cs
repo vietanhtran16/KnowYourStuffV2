@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using KnowYourStuffCore.Models;
 
 namespace KnowYourStuffCore.Dtos
 {

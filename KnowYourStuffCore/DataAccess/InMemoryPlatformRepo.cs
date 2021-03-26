@@ -1,5 +1,6 @@
 using KnowYourStuffCore.Dtos;
 using KnowYourStuffCore.Interfaces;
+using KnowYourStuffCore.Models;
 
 namespace KnowYourStuffCore.DataAccess
 {
