@@ -10,6 +10,13 @@ namespace KnowYourStuffCore.Models
             Name = name;
             Description = description;
         }
+        
+        public Platform(Guid id, string name, string description)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+        }
 
         public Guid Id { get; }
         public string Name { get; }

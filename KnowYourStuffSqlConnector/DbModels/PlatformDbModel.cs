@@ -15,5 +15,10 @@ namespace KnowYourStuffSqlConnector.DbModels
         
         [MaxLength(500)]
         public string Description { get; set; }
+
+        public Platform ToPlatform()
+        {
+            return new Platform(Id, Name, Description);
+        }
     }
 }

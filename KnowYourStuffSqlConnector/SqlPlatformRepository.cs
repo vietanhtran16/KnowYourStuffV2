@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using KnowYourStuffCore.Interfaces;
 using KnowYourStuffCore.Models;
@@ -18,6 +20,12 @@ namespace KnowYourStuffSqlConnector
             await _repositoryContext.Platforms.AddAsync(new PlatformDbModel() { Id = newPlatform.Id, Name = newPlatform.Name, Description = newPlatform.Description });
             await _repositoryContext.SaveChangesAsync();
             return newPlatform;
+        }
+
+        public Task<List<Platform>> GetPlatforms()
+        {
+            var platforms = _repositoryContext.Platforms.Select(platformDb => platformDb.ToPlatform()).ToList();
+            return Task.FromResult(platforms);
         }
     }
 }

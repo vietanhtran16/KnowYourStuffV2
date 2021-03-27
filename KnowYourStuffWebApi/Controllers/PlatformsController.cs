@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using KnowYourStuffCore.Dtos;
 using KnowYourStuffCore.Interfaces;
@@ -14,6 +16,14 @@ namespace KnowYourStuffWebApi.Controllers
         public PlatformsController(IPlatformRepository platformRepository)
         {
             _platformRepo = platformRepository;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<PlatformRead>>> GetPlatforms()
+        {
+            var platforms = await _platformRepo.GetPlatforms();
+            var platformReadDtos = platforms.Select(platform => new PlatformRead(platform));
+            return Ok(platformReadDtos);
         }
         
         [HttpPost]

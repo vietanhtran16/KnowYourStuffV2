@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using KnowYourStuffCore.Dtos;
 using KnowYourStuffCore.Interfaces;
@@ -7,9 +8,19 @@ namespace KnowYourStuffCore.DataAccess
 {
     public class InMemoryPlatformRepo : IPlatformRepository
     {
-        public async Task<Platform> CreatePlatform(Platform newPlatform)
+        private readonly List<Platform> _platforms = new List<Platform>()
         {
-            return newPlatform;
+            new Platform("node", "Javascript"),
+            new Platform("docker", "Container"),
+        };
+        public Task<Platform> CreatePlatform(Platform newPlatform)
+        {
+            return Task.FromResult(newPlatform);
+        }
+
+        public Task<List<Platform>> GetPlatforms()
+        {
+            return Task.FromResult(_platforms);
         }
     }
 }
