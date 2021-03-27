@@ -4,10 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using KnowYourStuffCore.DataAccess;
 using KnowYourStuffCore.Interfaces;
+using KnowYourStuffSqlConnector;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,9 +31,13 @@ namespace KnowYourStuffWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            var connectionStringBuilder = new SqlConnectionStringBuilder(Configuration.GetConnectionString("KnowYourStuffConnection"))
+            {
+                DataSource = Configuration["DbCredential:Source"], UserID = Configuration["DbCredential:User"], Password = Configuration["DbCredential:Password"]
+            };
+            services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionStringBuilder.ConnectionString));
             services.AddControllers();
-            services.AddScoped<IPlatformRepository, InMemoryPlatformRepo>();
+            services.AddScoped<IPlatformRepository, SqlPlatformRepository>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "KnowYourStuffWebApi", Version = "v1" });
