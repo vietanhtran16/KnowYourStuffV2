@@ -36,8 +36,10 @@ namespace KnowYourStuffWebApi
                 DataSource = Configuration["DbCredential:Source"], UserID = Configuration["DbCredential:User"], Password = Configuration["DbCredential:Password"], InitialCatalog = "KnowYourStuff"
             };
             services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionStringBuilder.ConnectionString));
-            services.AddControllers();
             services.AddScoped<IPlatformRepository, SqlPlatformRepository>();
+            
+            services.AddControllers();
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "KnowYourStuffWebApi", Version = "v1" });
