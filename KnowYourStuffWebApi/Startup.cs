@@ -33,7 +33,7 @@ namespace KnowYourStuffWebApi
         {
             var connectionStringBuilder = new SqlConnectionStringBuilder(Configuration.GetConnectionString("KnowYourStuffConnection"))
             {
-                DataSource = Configuration["DbCredential:Source"], UserID = Configuration["DbCredential:User"], Password = Configuration["DbCredential:Password"]
+                DataSource = Configuration["DbCredential:Source"], UserID = Configuration["DbCredential:User"], Password = Configuration["DbCredential:Password"], InitialCatalog = "KnowYourStuff"
             };
             services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionStringBuilder.ConnectionString));
             services.AddControllers();
