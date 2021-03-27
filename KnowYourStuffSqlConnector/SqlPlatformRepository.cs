@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using KnowYourStuffCore.Interfaces;
 using KnowYourStuffCore.Models;
 using KnowYourStuffSqlConnector.DbModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace KnowYourStuffSqlConnector
 {
@@ -24,8 +25,7 @@ namespace KnowYourStuffSqlConnector
 
         public Task<List<Platform>> GetPlatforms()
         {
-            var platforms = _repositoryContext.Platforms.Select(platformDb => platformDb.ToPlatform()).ToList();
-            return Task.FromResult(platforms);
+            return _repositoryContext.Platforms.Select(platformDb => platformDb.ToPlatform()).ToListAsync();
         }
     }
 }
