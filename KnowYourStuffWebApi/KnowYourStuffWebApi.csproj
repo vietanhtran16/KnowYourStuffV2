@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KnowYourStuffCore\KnowYourStuffCore.csproj" />
+    <ProjectReference Include="..\KnowYourStuffMongoDbConnector\KnowYourStuffMongoDbConnector.csproj" />
     <ProjectReference Include="..\KnowYourStuffSqlConnector\KnowYourStuffSqlConnector.csproj" />
   </ItemGroup>
 

@@ -1,20 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using KnowYourStuffCore.DataAccess;
 using KnowYourStuffCore.Interfaces;
+using KnowYourStuffMongoDbConnector.DataAccess;
 using KnowYourStuffSqlConnector;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 namespace KnowYourStuffWebApi
@@ -31,12 +25,20 @@ namespace KnowYourStuffWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionStringBuilder = new SqlConnectionStringBuilder(Configuration.GetConnectionString("KnowYourStuffConnection"))
-            {
-                DataSource = Configuration["DbCredential:Source"], UserID = Configuration["DbCredential:User"], Password = Configuration["DbCredential:Password"], InitialCatalog = "KnowYourStuff"
-            };
-            services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionStringBuilder.ConnectionString));
-            services.AddScoped<IPlatformRepository, SqlPlatformRepository>();
+            // Set up MsSql connection
+            // var connectionStringBuilder = new SqlConnectionStringBuilder(Configuration.GetConnectionString("KnowYourStuffConnection"))
+            // {
+            //     DataSource = Configuration["DbCredential:Source"], UserID = Configuration["DbCredential:User"], Password = Configuration["DbCredential:Password"], InitialCatalog = "KnowYourStuff"
+            // };
+            // services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionStringBuilder.ConnectionString));
+            // services.AddScoped<IPlatformRepository, SqlPlatformRepository>();
+            
+            // Set up MongoDb connection
+            services.Configure<MongoDbSettings>(
+                Configuration.GetSection(nameof(MongoDbSettings)));
+            services.AddSingleton<IMongoDbSettings>(sp =>
+                sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
+            services.AddScoped<IPlatformRepository, MongoPlatformRepository>();
             
             services.AddControllers();
             
