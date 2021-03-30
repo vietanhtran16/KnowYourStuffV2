@@ -1,5 +1,6 @@
 using System;
 using KnowYourStuffCore.Dtos;
+using KnowYourStuffCore.Exceptions;
 
 namespace KnowYourStuffCore.Models
 {
@@ -17,6 +18,14 @@ namespace KnowYourStuffCore.Models
             Id = id;
             Name = name;
             Description = description;
+        }
+
+        public void Validate()
+        {
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                throw new MissingPropertyException("Platform", "Name");
+            }
         }
 
         public Guid Id { get; }

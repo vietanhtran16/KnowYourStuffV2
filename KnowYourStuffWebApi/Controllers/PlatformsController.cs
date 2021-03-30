@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KnowYourStuffCore.Dtos;
+using KnowYourStuffCore.Exceptions;
 using KnowYourStuffCore.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,8 +28,15 @@ namespace KnowYourStuffWebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<PlatformRead>> CreatePlatform(NewPlatform platform)
         {
-            var platformRead = await _platformService.Create(platform);
-            return Created("/", platformRead);
+            try
+            {
+                var platformRead = await _platformService.Create(platform);
+                return Created("/", platformRead);
+            }
+            catch (MissingPropertyException exception)
+            {
+                return BadRequest(exception.Message);
+            }
         }
     }
 }

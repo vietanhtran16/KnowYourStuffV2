@@ -17,6 +17,8 @@ namespace KnowYourStuffCore.Services
         public async Task<PlatformRead> Create(NewPlatform newPlatform)
         {
             var platform = newPlatform.ToPlatform();
+            platform.Validate();
+            
             await _repository.CreatePlatform(platform);
             return new PlatformRead(platform);
         }
