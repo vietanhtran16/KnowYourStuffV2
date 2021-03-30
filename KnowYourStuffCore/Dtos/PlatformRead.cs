@@ -12,8 +12,8 @@ namespace KnowYourStuffCore.Dtos
             Description = platform.Description;
         }
 
-        private Guid Id { get; }
-        private string Name { get; }
-        private string Description { get; }
+        public Guid Id { get; }
+        public string Name { get; }
+        public string Description { get; }
     }
 }
