@@ -1,4 +1,5 @@
 using KnowYourStuffCore.Interfaces;
+using KnowYourStuffCore.Services;
 using KnowYourStuffMongoDbConnector.DataAccess;
 using KnowYourStuffSqlConnector;
 using Microsoft.AspNetCore.Builder;
@@ -39,6 +40,8 @@ namespace KnowYourStuffWebApi
             services.AddSingleton<IMongoDbSettings>(sp =>
                 sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
             services.AddScoped<IPlatformRepository, MongoPlatformRepository>();
+            
+            services.AddScoped<IPlatformService, PlatformService>();
             
             services.AddControllers();
             

@@ -1,9 +1,7 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using KnowYourStuffCore.Dtos;
 using KnowYourStuffCore.Interfaces;
-using KnowYourStuffWebApi.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KnowYourStuffWebApi.Controllers
@@ -12,25 +10,23 @@ namespace KnowYourStuffWebApi.Controllers
     [Route("api/[controller]")]
     public class PlatformsController : ControllerBase
     {
-        private readonly IPlatformRepository _platformRepo;
-        public PlatformsController(IPlatformRepository platformRepository)
+        private readonly IPlatformService _platformService;
+        public PlatformsController(IPlatformService platformService)
         {
-            _platformRepo = platformRepository;
+            _platformService = platformService;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<PlatformRead>>> GetPlatforms()
         {
-            var platforms = await _platformRepo.GetPlatforms();
-            var platformReadDtos = platforms.Select(platform => new PlatformRead(platform));
+            var platformReadDtos = await _platformService.GetPlatforms();
             return Ok(platformReadDtos);
         }
         
         [HttpPost]
         public async Task<ActionResult<PlatformRead>> CreatePlatform(NewPlatform platform)
         {
-            var createdPlatform = await _platformRepo.CreatePlatform(platform.ToPlatform());
-            var platformRead = new PlatformRead(createdPlatform);
+            var platformRead = await _platformService.Create(platform);
             return Created("/", platformRead);
         }
     }

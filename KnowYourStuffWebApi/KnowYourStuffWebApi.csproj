@@ -20,4 +20,8 @@
     <ProjectReference Include="..\KnowYourStuffSqlConnector\KnowYourStuffSqlConnector.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dtos" />
+  </ItemGroup>
+
 </Project>

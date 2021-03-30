@@ -1,7 +1,7 @@
 using System;
 using KnowYourStuffCore.Models;
 
-namespace KnowYourStuffWebApi.Dtos
+namespace KnowYourStuffCore.Dtos
 {
     public class PlatformRead
     {
@@ -12,8 +12,8 @@ namespace KnowYourStuffWebApi.Dtos
             Description = platform.Description;
         }
 
-        public Guid Id { get; }
-        public string Name { get; }
-        public string Description { get; }
+        private Guid Id { get; }
+        private string Name { get; }
+        private string Description { get; }
     }
 }
