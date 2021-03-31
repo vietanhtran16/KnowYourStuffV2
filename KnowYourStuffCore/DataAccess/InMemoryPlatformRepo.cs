@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KnowYourStuffCore.Dtos;
@@ -21,6 +22,11 @@ namespace KnowYourStuffCore.DataAccess
         public Task<List<Platform>> GetPlatforms()
         {
             return Task.FromResult(_platforms);
+        }
+
+        public Task<Platform> GetPlatform(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

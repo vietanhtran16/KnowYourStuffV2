@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,6 +28,12 @@ namespace KnowYourStuffCore.Services
         {
             var platforms = await _repository.GetPlatforms();
             return platforms.Select(platform => new PlatformRead(platform)).ToList();
+        }
+
+        public async Task<PlatformRead> GetPlatform(Guid id)
+        {
+            var platform = await _repository.GetPlatform(id);
+            return new PlatformRead(platform);
         }
     }
 }

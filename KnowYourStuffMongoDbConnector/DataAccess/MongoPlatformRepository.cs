@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,6 +31,13 @@ namespace KnowYourStuffMongoDbConnector.DataAccess
         {
             var platforms = await _platforms.Find(platform => true).ToListAsync();
             return platforms.Select(platform => new Platform(platform.Id, platform.Name, platform.Description)).ToList();
+        }
+
+        public async Task<Platform> GetPlatform(Guid id)
+        {
+            var platform = await _platforms.Find(Builders<PlatformMongoModel>.Filter.Eq("_id", id))
+                .FirstOrDefaultAsync();
+            return new Platform(platform.Id, platform.Name, platform.Description);
         }
     }
 }

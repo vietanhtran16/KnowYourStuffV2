@@ -25,6 +25,13 @@ namespace KnowYourStuffWebApi.Controllers
             return Ok(platformReadDtos);
         }
         
+        [HttpGet("{id}")]
+        public async Task<ActionResult<PlatformRead>> GetPlatform(Guid id)
+        {
+            var platformRead = await _platformService.GetPlatform(id);
+            return Ok(platformRead);
+        }
+        
         [HttpPost]
         public async Task<ActionResult<PlatformRead>> CreatePlatform(NewPlatform platform)
         {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,5 +11,6 @@ namespace KnowYourStuffCore.Interfaces
     {
         Task<Platform> CreatePlatform(Platform newPlatform);
         Task<List<Platform>> GetPlatforms();
+        Task<Platform> GetPlatform(Guid id);
     }
 }

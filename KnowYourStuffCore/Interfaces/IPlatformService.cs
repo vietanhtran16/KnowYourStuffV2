@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KnowYourStuffCore.Dtos;
@@ -8,5 +9,6 @@ namespace KnowYourStuffCore.Interfaces
     {
         Task<PlatformRead> Create(NewPlatform newPlatform);
         Task<List<PlatformRead>> GetPlatforms();
+        Task<PlatformRead> GetPlatform(Guid id);
     }
 }

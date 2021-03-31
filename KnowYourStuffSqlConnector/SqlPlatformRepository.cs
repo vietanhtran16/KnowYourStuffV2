@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,6 +27,11 @@ namespace KnowYourStuffSqlConnector
         public Task<List<Platform>> GetPlatforms()
         {
             return _repositoryContext.Platforms.Select(platformDb => platformDb.ToPlatform()).ToListAsync();
+        }
+
+        public Task<Platform> GetPlatform(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
