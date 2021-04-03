@@ -28,8 +28,15 @@ namespace KnowYourStuffWebApi.Controllers
         [HttpGet("{id}", Name = "GetPlatform")]
         public async Task<ActionResult<PlatformRead>> GetPlatform(Guid id)
         {
-            var platformRead = await _platformService.GetPlatform(id);
-            return Ok(platformRead);
+            try
+            {
+                var platformRead = await _platformService.GetPlatform(id);
+                return Ok(platformRead);
+            }
+            catch (Exception exception)
+            {
+                return NotFound(exception.Message);
+            }
         }
         
         [HttpPost]

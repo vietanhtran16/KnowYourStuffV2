@@ -32,13 +32,13 @@ namespace KnowYourStuffSqlConnector
         public async Task<Platform> GetPlatform(Guid id)
         {
             var platformDbModel = await _repositoryContext.Platforms.FirstOrDefaultAsync(platformDb => platformDb.Id == id);
-            return platformDbModel.ToPlatform();
+            return platformDbModel?.ToPlatform();
         }
 
         public async Task<Platform> GetPlatform(string name)
         {
             var platformDbModel = await _repositoryContext.Platforms.FirstOrDefaultAsync(platformDb => platformDb.Name == name);
-            return platformDbModel.ToPlatform();
+            return platformDbModel?.ToPlatform();
         }
     }
 }

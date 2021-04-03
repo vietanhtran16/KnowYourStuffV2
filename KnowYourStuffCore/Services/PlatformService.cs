@@ -39,6 +39,10 @@ namespace KnowYourStuffCore.Services
         public async Task<PlatformRead> GetPlatform(Guid id)
         {
             var platform = await _repository.GetPlatform(id);
+            if (platform == null)
+            {
+                throw new NotFoundException();
+            }
             return new PlatformRead(platform);
         }
     }

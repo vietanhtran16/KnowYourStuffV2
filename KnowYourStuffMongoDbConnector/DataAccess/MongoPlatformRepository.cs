@@ -37,7 +37,7 @@ namespace KnowYourStuffMongoDbConnector.DataAccess
         {
             var platform = await _platforms.Find(Builders<PlatformMongoModel>.Filter.Eq("_id", id))
                 .FirstOrDefaultAsync();
-            return platform.ToPlatform();
+            return platform?.ToPlatform();
         }
 
         public async Task<Platform> GetPlatform(string name)
