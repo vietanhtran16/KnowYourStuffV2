@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KnowYourStuffCore.Dtos;
+using KnowYourStuffCore.Exceptions;
 using KnowYourStuffCore.Interfaces;
 
 namespace KnowYourStuffCore.Services
@@ -19,6 +20,11 @@ namespace KnowYourStuffCore.Services
         {
             var platform = newPlatform.ToPlatform();
             platform.Validate();
+            var duplicatedPlatform = await _repository.GetPlatform(platform.Name);
+            if (duplicatedPlatform != null)
+            {
+                throw new DuplicatedPlatformException(platform.Name);
+            }
             
             await _repository.CreatePlatform(platform);
             return new PlatformRead(platform);

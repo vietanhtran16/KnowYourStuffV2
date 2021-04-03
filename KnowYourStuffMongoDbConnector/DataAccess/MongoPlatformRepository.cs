@@ -39,5 +39,10 @@ namespace KnowYourStuffMongoDbConnector.DataAccess
                 .FirstOrDefaultAsync();
             return new Platform(platform.Id, platform.Name, platform.Description);
         }
+
+        public Task<Platform> GetPlatform(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

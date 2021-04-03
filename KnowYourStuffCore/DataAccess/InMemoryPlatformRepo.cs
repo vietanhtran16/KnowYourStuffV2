@@ -28,5 +28,10 @@ namespace KnowYourStuffCore.DataAccess
         {
             throw new NotImplementedException();
         }
+
+        public Task<Platform> GetPlatform(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -40,7 +40,7 @@ namespace KnowYourStuffWebApi.Controllers
                 var platformRead = await _platformService.Create(platform);
                 return CreatedAtRoute(nameof(GetPlatform), new { platformRead.Id }, platformRead);
             }
-            catch (MissingPropertyException exception)
+            catch (Exception exception)
             {
                 return BadRequest(exception.Message);
             }

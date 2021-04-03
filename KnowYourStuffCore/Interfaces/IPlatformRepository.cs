@@ -12,5 +12,6 @@ namespace KnowYourStuffCore.Interfaces
         Task<Platform> CreatePlatform(Platform newPlatform);
         Task<List<Platform>> GetPlatforms();
         Task<Platform> GetPlatform(Guid id);
+        Task<Platform> GetPlatform(string name);
     }
 }
