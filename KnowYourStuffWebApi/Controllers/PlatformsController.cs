@@ -25,7 +25,7 @@ namespace KnowYourStuffWebApi.Controllers
             return Ok(platformReadDtos);
         }
         
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetPlatform")]
         public async Task<ActionResult<PlatformRead>> GetPlatform(Guid id)
         {
             var platformRead = await _platformService.GetPlatform(id);
@@ -38,7 +38,7 @@ namespace KnowYourStuffWebApi.Controllers
             try
             {
                 var platformRead = await _platformService.Create(platform);
-                return Created("/", platformRead);
+                return CreatedAtRoute(nameof(GetPlatform), new { platformRead.Id }, platformRead);
             }
             catch (MissingPropertyException exception)
             {
