@@ -29,9 +29,10 @@ namespace KnowYourStuffSqlConnector
             return _repositoryContext.Platforms.Select(platformDb => platformDb.ToPlatform()).ToListAsync();
         }
 
-        public Task<Platform> GetPlatform(Guid id)
+        public async Task<Platform> GetPlatform(Guid id)
         {
-            throw new NotImplementedException();
+            var platformDbModel = await _repositoryContext.Platforms.FirstOrDefaultAsync(platformDb => platformDb.Id == id);
+            return platformDbModel.ToPlatform();
         }
     }
 }
