@@ -10,5 +10,6 @@ namespace KnowYourStuffCore.Interfaces
         Task<PlatformRead> Create(NewPlatform newPlatform);
         Task<List<PlatformRead>> GetPlatforms();
         Task<PlatformRead> GetPlatform(Guid id);
+        Task<TipRead> AddTipToPlatform(NewTip newTip);
     }
 }
