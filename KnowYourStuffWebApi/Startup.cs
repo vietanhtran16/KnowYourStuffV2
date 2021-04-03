@@ -27,19 +27,19 @@ namespace KnowYourStuffWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             // Set up MsSql connection
-            var connectionStringBuilder = new SqlConnectionStringBuilder(Configuration.GetConnectionString("KnowYourStuffConnection"))
-            {
-                DataSource = Configuration["DbCredential:Source"], UserID = Configuration["DbCredential:User"], Password = Configuration["DbCredential:Password"], InitialCatalog = "KnowYourStuff"
-            };
-            services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionStringBuilder.ConnectionString));
-            services.AddScoped<IPlatformRepository, SqlPlatformRepository>();
+            // var connectionStringBuilder = new SqlConnectionStringBuilder(Configuration.GetConnectionString("KnowYourStuffConnection"))
+            // {
+            //     DataSource = Configuration["DbCredential:Source"], UserID = Configuration["DbCredential:User"], Password = Configuration["DbCredential:Password"], InitialCatalog = "KnowYourStuff"
+            // };
+            // services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionStringBuilder.ConnectionString));
+            // services.AddScoped<IPlatformRepository, SqlPlatformRepository>();
             
             // Set up MongoDb connection
-            // services.Configure<MongoDbSettings>(
-            //     Configuration.GetSection(nameof(MongoDbSettings)));
-            // services.AddSingleton<IMongoDbSettings>(sp =>
-            //     sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
-            // services.AddScoped<IPlatformRepository, MongoPlatformRepository>();
+            services.Configure<MongoDbSettings>(
+                Configuration.GetSection(nameof(MongoDbSettings)));
+            services.AddSingleton<IMongoDbSettings>(sp =>
+                sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
+            services.AddScoped<IPlatformRepository, MongoPlatformRepository>();
             
             services.AddScoped<IPlatformService, PlatformService>();
             

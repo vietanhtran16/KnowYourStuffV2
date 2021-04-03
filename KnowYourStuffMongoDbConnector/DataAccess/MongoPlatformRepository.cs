@@ -37,12 +37,14 @@ namespace KnowYourStuffMongoDbConnector.DataAccess
         {
             var platform = await _platforms.Find(Builders<PlatformMongoModel>.Filter.Eq("_id", id))
                 .FirstOrDefaultAsync();
-            return new Platform(platform.Id, platform.Name, platform.Description);
+            return platform.ToPlatform();
         }
 
-        public Task<Platform> GetPlatform(string name)
+        public async Task<Platform> GetPlatform(string name)
         {
-            throw new NotImplementedException();
+            var platform = await _platforms.Find(Builders<PlatformMongoModel>.Filter.Eq(nameof(PlatformMongoModel.Name), name))
+                .FirstOrDefaultAsync();
+            return platform?.ToPlatform();
         }
     }
 }
