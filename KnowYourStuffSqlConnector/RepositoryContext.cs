@@ -11,5 +11,6 @@ namespace KnowYourStuffSqlConnector
         }
         
         public DbSet<PlatformDbModel> Platforms { get; set; }
+        public DbSet<TipDbModel> Tips { get; set; }
     }
 }
