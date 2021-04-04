@@ -33,6 +33,7 @@ namespace KnowYourStuffWebApi
             };
             services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionStringBuilder.ConnectionString));
             services.AddScoped<IPlatformRepository, SqlPlatformRepository>();
+            services.AddScoped<ITipRepository, SqlTipRepository>();
             
             // Set up MongoDb connection
             // services.Configure<MongoDbSettings>(
@@ -42,7 +43,8 @@ namespace KnowYourStuffWebApi
             // services.AddScoped<IPlatformRepository, MongoPlatformRepository>();
             
             services.AddScoped<IPlatformService, PlatformService>();
-            
+            services.AddScoped<ITipService, TipService>();
+
             services.AddControllers();
             
             services.AddSwaggerGen(c =>

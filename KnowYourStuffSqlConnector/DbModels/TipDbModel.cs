@@ -1,8 +1,10 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KnowYourStuffSqlConnector.DbModels
 {
+    [Table("Tips")]
     public class TipDbModel
     {
         [Key]
@@ -16,7 +18,7 @@ namespace KnowYourStuffSqlConnector.DbModels
         [MaxLength(500)]
         public string Snippet { get; set; }
         
-        public int PlatformId { get; set; }
+        public Guid PlatformId { get; set; }
         public PlatformDbModel Platform { get; set; }
     }
 }
