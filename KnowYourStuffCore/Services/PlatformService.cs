@@ -43,14 +43,19 @@ namespace KnowYourStuffCore.Services
             var platform = await _repository.GetPlatform(id);
             if (platform == null)
             {
-                throw new NotFoundException();
+                throw new NotFoundException("Platform", id);
             }
             return new PlatformRead(platform);
         }
 
-        public Task<TipRead> AddTipToPlatform(NewTip newTip)
+        public async Task<TipRead> AddTipToPlatform(NewTip newTip)
         {
-            return _tipService.Create(newTip);
+            var platform = await _repository.GetPlatform(newTip.PlatformId);
+            if (platform == null)
+            {
+                throw new NotFoundException("Platform", newTip.PlatformId);
+            }
+            return await _tipService.Create(newTip);
         }
     }
 }

@@ -57,8 +57,20 @@ namespace KnowYourStuffWebApi.Controllers
         public async Task<ActionResult<TipRead>> AddTipToPlatform(Guid platformId, NewTip newTip)
         {
             newTip.PlatformId = platformId;
-            var createdTip = await _platformService.AddTipToPlatform(newTip);
-            return Created("/", createdTip);
+            try
+            {
+                var createdTip = await _platformService.AddTipToPlatform(newTip);
+                return Created("/", createdTip);
+            }
+            catch (NotFoundException exception)
+            {
+                return NotFound(exception.Message);
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception.Message);
+            }
+            
         }
     }
 }

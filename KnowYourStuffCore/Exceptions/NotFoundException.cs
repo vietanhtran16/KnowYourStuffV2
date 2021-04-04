@@ -4,6 +4,6 @@ namespace KnowYourStuffCore.Exceptions
 {
     public class NotFoundException : Exception
     {
-        public NotFoundException() : base("Not found") {}
+        public NotFoundException(string entityName, Guid id) : base($"{entityName} with id of {id} not found") {}
     }
 }
