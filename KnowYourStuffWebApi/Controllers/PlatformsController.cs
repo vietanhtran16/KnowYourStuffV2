@@ -53,6 +53,13 @@ namespace KnowYourStuffWebApi.Controllers
             }
         }
 
+        [HttpGet("{platformId}/Tips")]
+        public async Task<ActionResult<List<TipRead>>> GetTipsByPlatform(Guid platformId)
+        {
+            var tipsRead = await _platformService.GetTipsByPlatform(platformId);
+            return tipsRead;
+        }
+
         [HttpPost("{platformId}/Tips")]
         public async Task<ActionResult<TipRead>> AddTipToPlatform(Guid platformId, NewTip newTip)
         {
@@ -70,7 +77,6 @@ namespace KnowYourStuffWebApi.Controllers
             {
                 return BadRequest(exception.Message);
             }
-            
         }
     }
 }

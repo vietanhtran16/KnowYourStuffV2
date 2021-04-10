@@ -57,5 +57,10 @@ namespace KnowYourStuffCore.Services
             }
             return await _tipService.Create(newTip);
         }
+
+        public Task<List<TipRead>> GetTipsByPlatform(Guid platformId)
+        {
+            return _tipService.GetTipsByPlatform(platformId);
+        }
     }
 }

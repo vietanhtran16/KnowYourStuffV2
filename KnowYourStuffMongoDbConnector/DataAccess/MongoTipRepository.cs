@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using KnowYourStuffCore.Interfaces;
 using KnowYourStuffCore.Models;
@@ -26,6 +28,11 @@ namespace KnowYourStuffMongoDbConnector.DataAccess
                 Snippet = newTip.Snippet
             });
             return newTip;
+        }
+
+        public Task<List<Tip>> GetTipsByPlatform(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
