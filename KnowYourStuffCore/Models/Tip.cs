@@ -14,7 +14,7 @@ namespace KnowYourStuffCore.Models
         
         public Tip(Guid id, string description, string snippet, Guid platformId)
         {
-            Id = Guid.NewGuid();
+            Id = id;
             Description = description;
             Snippet = snippet;
             PlatformId = platformId;
