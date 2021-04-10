@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using KnowYourStuffCore.Exceptions;
 using KnowYourStuffCore.Interfaces;
@@ -24,9 +25,10 @@ namespace KnowYourStuffSqlConnector
             return newTip;
         }
 
-        public Task<List<Tip>> GetTipsByPlatform(Guid id)
+        public async Task<List<Tip>> GetTipsByPlatform(Guid id)
         {
-            throw new NotImplementedException();
+            var tips = await _repositoryContext.Tips.Where(tip => tip.PlatformId == id).ToListAsync();
+            return tips.Select(tip => new Tip(tip.Id, tip.Description, tip.Snippet, tip.PlatformId)).ToList();
         }
     }
 }
