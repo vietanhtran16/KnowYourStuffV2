@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using KnowYourStuffCore.Interfaces;
 using KnowYourStuffCore.Models;
@@ -30,9 +31,11 @@ namespace KnowYourStuffMongoDbConnector.DataAccess
             return newTip;
         }
 
-        public Task<List<Tip>> GetTipsByPlatform(Guid id)
+        public async Task<List<Tip>> GetTipsByPlatform(Guid id)
         {
-            throw new NotImplementedException();
+            var filter = Builders<TipMongoModel>.Filter.Eq(nameof(TipMongoModel.PlatformId), id);
+            var tips = await _tips.FindAsync(filter);
+            return tips.ToList().Select(tip => new Tip(tip.Id, tip.Description, tip.Snippet, tip.PlatformId)).ToList();
         }
     }
 }
