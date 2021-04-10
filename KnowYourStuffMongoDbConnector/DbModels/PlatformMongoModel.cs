@@ -5,9 +5,9 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace KnowYourStuffMongoDbConnector.DbModels
 {
+    [BsonIgnoreExtraElements]
     public class PlatformMongoModel
     {
-
         [BsonId]
         public Guid Id { get; set; }
         
@@ -15,19 +15,9 @@ namespace KnowYourStuffMongoDbConnector.DbModels
         
         public string Description { get; set; }
         
-        public List<TipMongoModel> Tips;
-        
         public Platform ToPlatform()
         {
             return new Platform(Id, Name, Description);
         }
-    }
-
-    public class TipMongoModel
-    {
-        [BsonId]
-        public Guid Id { get; set; }
-        public string Description { get; set; }
-        public string Snippet { get; set; }
     }
 }

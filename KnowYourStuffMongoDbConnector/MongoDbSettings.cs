@@ -3,6 +3,7 @@ namespace KnowYourStuffWebApi
     public class MongoDbSettings : IMongoDbSettings
     {
         public string PlatformsCollectionName { get; set; }
+        public string TipsCollectionName { get; set; }
         public string Host { get; set; }
         public string Port { get; set; }
         public string DatabaseName { get; set; }
@@ -13,6 +14,7 @@ namespace KnowYourStuffWebApi
     public interface IMongoDbSettings
     {
         string PlatformsCollectionName { get; set; }
+        string TipsCollectionName { get; set; }
         string Host { get; set; }
         string Port { get; set; }
         string DatabaseName { get; set; }
