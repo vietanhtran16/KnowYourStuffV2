@@ -56,8 +56,19 @@ namespace KnowYourStuffWebApi.Controllers
         [HttpGet("{platformId}/Tips")]
         public async Task<ActionResult<List<TipRead>>> GetTipsByPlatform(Guid platformId)
         {
-            var tipsRead = await _platformService.GetTipsByPlatform(platformId);
-            return tipsRead;
+            try
+            {
+                var tipsRead = await _platformService.GetTipsByPlatform(platformId);
+                return tipsRead;
+            }
+            catch (NotFoundException exception)
+            {
+                return NotFound(exception.Message);
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception.Message);
+            }
         }
 
         [HttpPost("{platformId}/Tips")]

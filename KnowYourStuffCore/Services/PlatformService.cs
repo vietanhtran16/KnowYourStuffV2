@@ -58,9 +58,14 @@ namespace KnowYourStuffCore.Services
             return await _tipService.Create(newTip);
         }
 
-        public Task<List<TipRead>> GetTipsByPlatform(Guid platformId)
+        public async Task<List<TipRead>> GetTipsByPlatform(Guid platformId)
         {
-            return _tipService.GetTipsByPlatform(platformId);
+            var platform = await _repository.GetPlatform(platformId);
+            if (platform == null)
+            {
+                throw new NotFoundException("Platform", platformId);
+            }
+            return await _tipService.GetTipsByPlatform(platformId);
         }
     }
 }
