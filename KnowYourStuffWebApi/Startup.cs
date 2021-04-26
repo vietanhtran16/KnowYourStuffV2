@@ -1,15 +1,8 @@
-using KnowYourStuffCore.Interfaces;
-using KnowYourStuffCore.Services;
-using KnowYourStuffMongoDbConnector.DataAccess;
-using KnowYourStuffSqlConnector;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 namespace KnowYourStuffWebApi
@@ -26,17 +19,7 @@ namespace KnowYourStuffWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Set up MsSql connection
-            // var connectionStringBuilder = new SqlConnectionStringBuilder(Configuration.GetConnectionString("KnowYourStuffConnection"))
-            // {
-            //     DataSource = Configuration["DbCredential:Source"], UserID = Configuration["DbCredential:User"], Password = Configuration["DbCredential:Password"], InitialCatalog = "KnowYourStuff"
-            // };
-            // services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionStringBuilder.ConnectionString));
-            // services.AddScoped<IPlatformRepository, SqlPlatformRepository>();
-            // services.AddScoped<ITipRepository, SqlTipRepository>();
-            
-            // Set up MongoDb connection
-            services.AddMongoDbConfiguration(Configuration);
+            services.AddDbConfiguration(Configuration);
             services.AddAppConfiguration();
 
             services.AddControllers();

@@ -1,4 +1,4 @@
-namespace KnowYourStuffWebApi
+namespace KnowYourStuffMongoDbConnector
 {
     public class MongoDbSettings : IMongoDbSettings
     {

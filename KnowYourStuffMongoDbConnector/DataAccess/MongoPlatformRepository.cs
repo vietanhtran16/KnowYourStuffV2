@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using KnowYourStuffCore.Interfaces;
 using KnowYourStuffCore.Models;
 using KnowYourStuffMongoDbConnector.DbModels;
-using KnowYourStuffWebApi;
 using MongoDB.Driver;
 
 namespace KnowYourStuffMongoDbConnector.DataAccess
