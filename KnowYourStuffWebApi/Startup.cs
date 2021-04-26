@@ -36,15 +36,8 @@ namespace KnowYourStuffWebApi
             // services.AddScoped<ITipRepository, SqlTipRepository>();
             
             // Set up MongoDb connection
-            services.Configure<MongoDbSettings>(
-                Configuration.GetSection(nameof(MongoDbSettings)));
-            services.AddSingleton<IMongoDbSettings>(sp =>
-                sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
-            services.AddScoped<IPlatformRepository, MongoPlatformRepository>();
-            services.AddScoped<ITipRepository, MongoTipRepository>();
-            
-            services.AddScoped<IPlatformService, PlatformService>();
-            services.AddScoped<ITipService, TipService>();
+            services.AddMongoDbConfiguration(Configuration);
+            services.AddAppConfiguration();
 
             services.AddControllers();
             
