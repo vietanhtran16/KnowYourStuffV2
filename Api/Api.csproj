@@ -22,7 +22,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos" />
+    <Compile Remove="Dtos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Dtos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Dtos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Dtos\**" />
   </ItemGroup>
 
 </Project>
