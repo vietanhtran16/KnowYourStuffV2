@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>KnowYourStuffWebApi</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,9 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KnowYourStuffCore\KnowYourStuffCore.csproj" />
-    <ProjectReference Include="..\KnowYourStuffMongoDbConnector\KnowYourStuffMongoDbConnector.csproj" />
-    <ProjectReference Include="..\KnowYourStuffSqlConnector\KnowYourStuffSqlConnector.csproj" />
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\MongoDbConnector\MongoDbConnector.csproj" />
+    <ProjectReference Include="..\MsSqlConnector\MsSqlConnector.csproj" />
   </ItemGroup>
 
   <ItemGroup>

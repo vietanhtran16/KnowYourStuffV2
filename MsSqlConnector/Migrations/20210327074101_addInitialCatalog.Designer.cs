@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KnowYourStuffSqlConnector.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20210327060335_initialmigration")]
-    partial class initialmigration
+    [Migration("20210327074101_addInitialCatalog")]
+    partial class addInitialCatalog
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace KnowYourStuffSqlConnector.Migrations
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("KnowYourStuffSqlConnector.DbModels.PlatformDbModel", b =>
+            modelBuilder.Entity("MsSqlConnector.DbModels.PlatformDbModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

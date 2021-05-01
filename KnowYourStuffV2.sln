@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowYourStuffCore", "KnowYourStuffCore\KnowYourStuffCore.csproj", "{0978294C-918F-438B-B788-47F333D9B3F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{0978294C-918F-438B-B788-47F333D9B3F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowYourStuffWebApi", "KnowYourStuffWebApi\KnowYourStuffWebApi.csproj", "{C823BD73-5397-4386-B6F9-93A46A2C6A56}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{C823BD73-5397-4386-B6F9-93A46A2C6A56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowYourStuffSqlConnector", "KnowYourStuffSqlConnector\KnowYourStuffSqlConnector.csproj", "{3C344A44-F674-4038-ABB6-E967AB828146}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsSqlConnector", "MsSqlConnector\MsSqlConnector.csproj", "{3C344A44-F674-4038-ABB6-E967AB828146}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowYourStuffMongoDbConnector", "KnowYourStuffMongoDbConnector\KnowYourStuffMongoDbConnector.csproj", "{166BB8A6-5B10-4029-A6E5-2051FBCDA503}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDbConnector", "MongoDbConnector\MongoDbConnector.csproj", "{166BB8A6-5B10-4029-A6E5-2051FBCDA503}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -19,7 +19,7 @@ namespace KnowYourStuffSqlConnector.Migrations
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("KnowYourStuffSqlConnector.DbModels.PlatformDbModel", b =>
+            modelBuilder.Entity("MsSqlConnector.DbModels.PlatformDbModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,7 +39,7 @@ namespace KnowYourStuffSqlConnector.Migrations
                     b.ToTable("Platforms");
                 });
 
-            modelBuilder.Entity("KnowYourStuffSqlConnector.DbModels.TipDbModel", b =>
+            modelBuilder.Entity("MsSqlConnector.DbModels.TipDbModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -65,9 +65,9 @@ namespace KnowYourStuffSqlConnector.Migrations
                     b.ToTable("Tips");
                 });
 
-            modelBuilder.Entity("KnowYourStuffSqlConnector.DbModels.TipDbModel", b =>
+            modelBuilder.Entity("MsSqlConnector.DbModels.TipDbModel", b =>
                 {
-                    b.HasOne("KnowYourStuffSqlConnector.DbModels.PlatformDbModel", "Platform")
+                    b.HasOne("MsSqlConnector.DbModels.PlatformDbModel", "Platform")
                         .WithMany("Tips")
                         .HasForeignKey("PlatformId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -76,7 +76,7 @@ namespace KnowYourStuffSqlConnector.Migrations
                     b.Navigation("Platform");
                 });
 
-            modelBuilder.Entity("KnowYourStuffSqlConnector.DbModels.PlatformDbModel", b =>
+            modelBuilder.Entity("MsSqlConnector.DbModels.PlatformDbModel", b =>
                 {
                     b.Navigation("Tips");
                 });
