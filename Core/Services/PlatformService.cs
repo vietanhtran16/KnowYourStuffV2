@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using KnowYourStuffCore.Dtos;
 using KnowYourStuffCore.Exceptions;
 using KnowYourStuffCore.Interfaces;
+using KnowYourStuffCore.Models;
 
 namespace KnowYourStuffCore.Services
 {
@@ -40,32 +41,30 @@ namespace KnowYourStuffCore.Services
 
         public async Task<PlatformRead> GetPlatform(Guid id)
         {
-            var platform = await _repository.GetPlatform(id);
-            if (platform == null)
-            {
-                throw new NotFoundException("Platform", id);
-            }
+            var platform = await CheckIfPlatformExists(id);
             return new PlatformRead(platform);
         }
 
         public async Task<TipRead> AddTipToPlatform(NewTip newTip)
         {
-            var platform = await _repository.GetPlatform(newTip.PlatformId);
-            if (platform == null)
-            {
-                throw new NotFoundException("Platform", newTip.PlatformId);
-            }
+            await CheckIfPlatformExists(newTip.PlatformId);
             return await _tipService.Create(newTip);
         }
 
         public async Task<List<TipRead>> GetTipsByPlatform(Guid platformId)
         {
-            var platform = await _repository.GetPlatform(platformId);
+            await CheckIfPlatformExists(platformId);
+            return await _tipService.GetTipsByPlatform(platformId);
+        }
+        
+        private async Task<Platform> CheckIfPlatformExists(Guid id)
+        {
+            var platform = await _repository.GetPlatform(id);
             if (platform == null)
             {
-                throw new NotFoundException("Platform", platformId);
+                throw new NotFoundException("Platform", id);
             }
-            return await _tipService.GetTipsByPlatform(platformId);
+            return platform;
         }
     }
 }
