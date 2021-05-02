@@ -33,7 +33,7 @@ namespace KnowYourStuffWebApi.Controllers
                 var platformRead = await _platformService.GetPlatform(id);
                 return Ok(platformRead);
             }
-            catch (Exception exception)
+            catch (NotFoundException exception)
             {
                 return NotFound(exception.Message);
             }
@@ -45,11 +45,15 @@ namespace KnowYourStuffWebApi.Controllers
             try
             {
                 var platformRead = await _platformService.Create(platform);
-                return CreatedAtRoute(nameof(GetPlatform), new { platformRead.Id }, platformRead);
+                return CreatedAtRoute(nameof(GetPlatform), new {platformRead.Id}, platformRead);
             }
-            catch (Exception exception)
+            catch (MissingPropertyException exception)
             {
                 return BadRequest(exception.Message);
+            }
+            catch (DuplicatedPlatformException exception)
+            {
+                return Conflict(exception.Message);
             }
         }
 
@@ -65,10 +69,6 @@ namespace KnowYourStuffWebApi.Controllers
             {
                 return NotFound(exception.Message);
             }
-            catch (Exception exception)
-            {
-                return BadRequest(exception.Message);
-            }
         }
 
         [HttpPost("{platformId}/Tips")]
@@ -83,10 +83,6 @@ namespace KnowYourStuffWebApi.Controllers
             catch (NotFoundException exception)
             {
                 return NotFound(exception.Message);
-            }
-            catch (Exception exception)
-            {
-                return BadRequest(exception.Message);
             }
         }
     }
