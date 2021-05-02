@@ -28,15 +28,8 @@ namespace KnowYourStuffWebApi.Controllers
         [HttpGet("{id}", Name = "GetPlatform")]
         public async Task<ActionResult<PlatformRead>> GetPlatform(Guid id)
         {
-            try
-            {
-                var platformRead = await _platformService.GetPlatform(id);
-                return Ok(platformRead);
-            }
-            catch (NotFoundException exception)
-            {
-                return NotFound(exception.Message);
-            }
+            var platformRead = await _platformService.GetPlatform(id);
+            return Ok(platformRead);
         }
         
         [HttpPost]
@@ -60,30 +53,16 @@ namespace KnowYourStuffWebApi.Controllers
         [HttpGet("{platformId}/Tips")]
         public async Task<ActionResult<List<TipRead>>> GetTipsByPlatform(Guid platformId)
         {
-            try
-            {
-                var tipsRead = await _platformService.GetTipsByPlatform(platformId);
-                return tipsRead;
-            }
-            catch (NotFoundException exception)
-            {
-                return NotFound(exception.Message);
-            }
+            var tipsRead = await _platformService.GetTipsByPlatform(platformId);
+            return tipsRead;
         }
 
         [HttpPost("{platformId}/Tips")]
         public async Task<ActionResult<TipRead>> AddTipToPlatform(Guid platformId, NewTip newTip)
         {
             newTip.PlatformId = platformId;
-            try
-            {
-                var createdTip = await _platformService.AddTipToPlatform(newTip);
-                return Created("/", createdTip);
-            }
-            catch (NotFoundException exception)
-            {
-                return NotFound(exception.Message);
-            }
+            var createdTip = await _platformService.AddTipToPlatform(newTip);
+            return Created("/", createdTip);
         }
     }
 }
