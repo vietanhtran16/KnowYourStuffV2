@@ -1,4 +1,5 @@
 using System;
+using KnowYourStuffCore.Exceptions;
 
 namespace KnowYourStuffCore.Models
 {
@@ -23,5 +24,13 @@ namespace KnowYourStuffCore.Models
         public string Description { get; set; }
         public string Snippet { get; set; }
         public Guid PlatformId { get; set; }
+
+        public void Validate()
+        {
+            if (string.IsNullOrWhiteSpace(Snippet))
+            {
+                throw new MissingPropertyException("Tip", "Snippet");
+            }
+        }
     }
 }

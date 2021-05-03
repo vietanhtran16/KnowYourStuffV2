@@ -16,8 +16,10 @@ namespace KnowYourStuffCore.Services
         }
         public async Task<TipRead> Create(NewTip tip)
         {
-            var newTip = await _repository.Create(tip.ToTip());
-            return new TipRead(newTip);
+            var newTip = tip.ToTip();
+            newTip.Validate();
+            var createdTip = await _repository.Create(newTip);
+            return new TipRead(createdTip);
         }
 
         public async Task<List<TipRead>> GetTipsByPlatform(Guid platformId)
