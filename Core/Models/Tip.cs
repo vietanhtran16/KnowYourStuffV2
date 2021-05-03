@@ -31,6 +31,10 @@ namespace KnowYourStuffCore.Models
             {
                 throw new MissingPropertyException("Tip", "Snippet");
             }
+            if (string.IsNullOrWhiteSpace(Description))
+            {
+                throw new MissingPropertyException("Tip", "Description");
+            }
         }
     }
 }

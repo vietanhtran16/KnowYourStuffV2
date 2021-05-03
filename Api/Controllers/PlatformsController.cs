@@ -35,19 +35,8 @@ namespace KnowYourStuffWebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<PlatformRead>> CreatePlatform(NewPlatform platform)
         {
-            try
-            {
-                var platformRead = await _platformService.Create(platform);
-                return CreatedAtRoute(nameof(GetPlatform), new {platformRead.Id}, platformRead);
-            }
-            catch (MissingPropertyException exception)
-            {
-                return BadRequest(exception.Message);
-            }
-            catch (DuplicatedPlatformException exception)
-            {
-                return Conflict(exception.Message);
-            }
+            var platformRead = await _platformService.Create(platform);
+            return CreatedAtRoute(nameof(GetPlatform), new {platformRead.Id}, platformRead);
         }
 
         [HttpGet("{platformId}/Tips")]
