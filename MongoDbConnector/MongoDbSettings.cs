@@ -1,6 +1,6 @@
 namespace KnowYourStuffMongoDbConnector
 {
-    public class MongoDbSettings : IMongoDbSettings
+    public class MongoDbSettings
     {
         public string PlatformsCollectionName { get; set; }
         public string TipsCollectionName { get; set; }
@@ -9,16 +9,5 @@ namespace KnowYourStuffMongoDbConnector
         public string DatabaseName { get; set; }
         public string User { get; set; }
         public string Password { get; set; }
-    }
-    
-    public interface IMongoDbSettings
-    {
-        string PlatformsCollectionName { get; set; }
-        string TipsCollectionName { get; set; }
-        string Host { get; set; }
-        string Port { get; set; }
-        string DatabaseName { get; set; }
-        string User { get; set; }
-        string Password { get; set; }
     }
 }

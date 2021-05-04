@@ -48,7 +48,7 @@ namespace KnowYourStuffWebApi
         {
             services.Configure<MongoDbSettings>(
                 configuration.GetSection(nameof(MongoDbSettings)));
-            services.AddSingleton<IMongoDbSettings>(sp =>
+            services.AddSingleton(sp =>
                 sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
             services.AddScoped<IPlatformRepository, MongoPlatformRepository>();
             services.AddScoped<ITipRepository, MongoTipRepository>();

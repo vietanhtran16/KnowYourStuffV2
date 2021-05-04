@@ -12,7 +12,7 @@ namespace KnowYourStuffMongoDbConnector.DataAccess
     public class MongoTipRepository : ITipRepository
     {
         private readonly IMongoCollection<TipMongoModel> _tips;
-        public MongoTipRepository(IMongoDbSettings dbSettings)
+        public MongoTipRepository(MongoDbSettings dbSettings)
         {
             var connectionString = $"mongodb://{dbSettings.User}:{dbSettings.Password}@{dbSettings.Host}:{dbSettings.Port}";
             var client = new MongoClient(connectionString);

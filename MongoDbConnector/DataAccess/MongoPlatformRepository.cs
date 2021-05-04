@@ -12,7 +12,7 @@ namespace KnowYourStuffMongoDbConnector.DataAccess
     public class MongoPlatformRepository : IPlatformRepository
     {
         private readonly IMongoCollection<PlatformMongoModel> _platforms;
-        public MongoPlatformRepository(IMongoDbSettings dbSettings)
+        public MongoPlatformRepository(MongoDbSettings dbSettings)
         {
             var connectionString = $"mongodb://{dbSettings.User}:{dbSettings.Password}@{dbSettings.Host}:{dbSettings.Port}";
             var client = new MongoClient(connectionString);
