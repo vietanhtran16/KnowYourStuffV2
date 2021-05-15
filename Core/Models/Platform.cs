@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using KnowYourStuffCore.Dtos;
 using KnowYourStuffCore.Exceptions;
 
@@ -6,6 +7,13 @@ namespace KnowYourStuffCore.Models
 {
     public class Platform
     {
+        public Guid Id { get; }
+        public string Name { get; }
+        public string Description { get; }
+
+        public IList<Tip> Tips = new List<Tip>();
+
+        public IList<TipCreatedEvent> Events = new List<TipCreatedEvent>();
         public Platform(string name, string description)
         {
             Id = Guid.NewGuid();
@@ -19,6 +27,14 @@ namespace KnowYourStuffCore.Models
             Name = name;
             Description = description;
         }
+        
+        public Platform(Guid id, string name, string description, IList<Tip> tips)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            Tips = tips;
+        }
 
         public void Validate()
         {
@@ -28,9 +44,16 @@ namespace KnowYourStuffCore.Models
             }
         }
 
-        public Guid Id { get; }
-        public string Name { get; }
-
-        public string Description { get; }
+        public void AddTip(Tip tip)
+        {
+            Tips.Add(tip);
+            Events.Add(new TipCreatedEvent()
+            {
+                Id = tip.Id,
+                Description = tip.Description,
+                Snippet = tip.Snippet,
+                PlatformId = tip.PlatformId
+            });
+        }
     }
 }

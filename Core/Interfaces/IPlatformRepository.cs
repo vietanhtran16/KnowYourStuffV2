@@ -13,5 +13,6 @@ namespace KnowYourStuffCore.Interfaces
         Task<List<Platform>> GetPlatforms();
         Task<Platform> GetPlatform(Guid id);
         Task<Platform> GetPlatform(string name);
+        Task Save(Platform platform);
     }
 }
