@@ -16,7 +16,6 @@ namespace KnowYourStuffWebApi
         public static void AddAppConfiguration(this IServiceCollection services)
         {
             services.AddScoped<IPlatformService, PlatformService>();
-            services.AddScoped<ITipService, TipService>();
         }
 
         public static void AddDbConfiguration(this IServiceCollection services, IConfiguration configuration)
@@ -41,7 +40,6 @@ namespace KnowYourStuffWebApi
             };
             services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionStringBuilder.ConnectionString));
             services.AddScoped<IPlatformRepository, SqlPlatformRepository>();
-            services.AddScoped<ITipRepository, SqlTipRepository>();
         }
 
         private static void SetUpMongoDb(IServiceCollection services, IConfiguration configuration)
@@ -51,7 +49,6 @@ namespace KnowYourStuffWebApi
             services.AddSingleton(sp =>
                 sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
             services.AddScoped<IPlatformRepository, MongoPlatformRepository>();
-            services.AddScoped<ITipRepository, MongoTipRepository>();
         }
     }
 }
