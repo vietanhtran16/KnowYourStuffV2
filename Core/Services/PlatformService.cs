@@ -27,7 +27,7 @@ namespace KnowYourStuffCore.Services
                 throw new DuplicatedPlatformException(platform.Name);
             }
             
-            await _repository.CreatePlatform(platform);
+            await _repository.Save(platform);
             return new PlatformRead(platform);
         }
 
