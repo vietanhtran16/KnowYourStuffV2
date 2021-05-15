@@ -41,6 +41,12 @@ namespace KnowYourStuffSqlConnector
             return platformDbModel?.ToPlatform();
         }
 
+        public async Task<IList<Tip>> GetTips(Guid platformId)
+        {
+            var tips = await _repositoryContext.Tips.Where(tip => tip.PlatformId == platformId).ToListAsync();
+            return tips.Select(tip => new Tip(tip.Id, tip.Description, tip.Snippet, tip.PlatformId)).ToList();
+        }
+
         public async Task Save(Platform platform)
         {
             foreach (var platformEvent in platform.Events)

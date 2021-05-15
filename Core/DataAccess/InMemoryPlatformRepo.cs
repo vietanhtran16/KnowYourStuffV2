@@ -34,6 +34,11 @@ namespace KnowYourStuffCore.DataAccess
             throw new NotImplementedException();
         }
 
+        public Task<IList<Tip>> GetTips(Guid platformId)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task Save(Platform platform)
         {
             throw new NotImplementedException();

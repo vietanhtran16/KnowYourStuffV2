@@ -40,10 +40,10 @@ namespace KnowYourStuffWebApi.Controllers
         }
 
         [HttpGet("{platformId}/Tips")]
-        public async Task<ActionResult<List<TipRead>>> GetTipsByPlatform(Guid platformId)
+        public async Task<ActionResult<IList<TipRead>>> GetTipsByPlatform(Guid platformId)
         {
             var tipsRead = await _platformService.GetTipsByPlatform(platformId);
-            return tipsRead;
+            return Ok(tipsRead);
         }
 
         [HttpPost("{platformId}/Tips")]
