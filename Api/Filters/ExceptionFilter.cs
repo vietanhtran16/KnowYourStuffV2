@@ -1,11 +1,10 @@
 using System;
 using System.Net;
-using System.Threading.Tasks;
 using KnowYourStuffCore.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace KnowYourStuffWebApi.ExceptionHandlers
+namespace KnowYourStuffWebApi.Filters
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Delegate)]
     public class ExceptionFilter : ExceptionFilterAttribute
@@ -17,6 +16,7 @@ namespace KnowYourStuffWebApi.ExceptionHandlers
                 NotFoundException => HttpStatusCode.NotFound,
                 MissingPropertyException => HttpStatusCode.BadRequest,
                 DuplicatedPlatformException => HttpStatusCode.Conflict,
+                DuplicatedTipException => HttpStatusCode.Conflict,
                 _ => HttpStatusCode.InternalServerError
             };
 
