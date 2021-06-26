@@ -20,7 +20,7 @@ namespace KnowYourStuffSqlConnector
 
         public Task<List<Platform>> GetPlatforms()
         {
-            return _repositoryContext.Platforms.Select(platformDb => platformDb.ToPlatform()).ToListAsync();
+            return _repositoryContext.Platforms.Include(platformDb => platformDb.Tips).Select(platformDb => platformDb.ToPlatform()).ToListAsync();
         }
 
         public async Task<Platform> GetPlatform(Guid id)
