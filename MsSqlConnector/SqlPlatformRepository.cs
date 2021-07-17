@@ -60,18 +60,11 @@ namespace KnowYourStuffSqlConnector
         
         private async Task Handle(TipCreatedEvent tipCreatedEvent)
         {
-            var platform =
-                await _repositoryContext.Platforms.FirstOrDefaultAsync(item =>
-                    item.Id == tipCreatedEvent.PlatformId);
-            var newTip = new TipDbModel()
+            await _repositoryContext.Tips.AddAsync(new TipDbModel()
             {
-                Id = tipCreatedEvent.Id,
-                Description = tipCreatedEvent.Description,
-                Snippet = tipCreatedEvent.Snippet,
+                Id = tipCreatedEvent.Id, Description = tipCreatedEvent.Description, Snippet = tipCreatedEvent.Snippet,
                 PlatformId = tipCreatedEvent.PlatformId
-            };
-            _repositoryContext.Entry(newTip).State = EntityState.Added;
-            platform.Tips.Add(newTip);
+            });
         }
         
         private async Task Handle(PlatformCreatedEvent newPlatform)
