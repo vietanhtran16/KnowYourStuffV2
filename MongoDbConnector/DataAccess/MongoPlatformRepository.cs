@@ -46,11 +46,6 @@ namespace KnowYourStuffMongoDbConnector.DataAccess
             return platform?.ToPlatform();
         }
 
-        public Task<IList<Tip>> GetTips(Guid platformId)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task Save(Platform platform)
         {
             throw new NotImplementedException();

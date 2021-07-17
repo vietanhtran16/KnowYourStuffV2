@@ -11,6 +11,6 @@ namespace KnowYourStuffCore.Interfaces
         Task<List<PlatformRead>> GetPlatforms();
         Task<PlatformRead> GetPlatform(Guid id);
         Task<TipRead> AddTipToPlatform(NewTip newTip);
-        Task<IList<TipRead>> GetTipsByPlatform(Guid platformId);
+        Task<List<TipRead>> GetTipsByPlatform(Guid platformId);
     }
 }

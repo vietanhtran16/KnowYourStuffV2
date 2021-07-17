@@ -58,15 +58,10 @@ namespace KnowYourStuffCore.Services
             return new TipRead(tip);
         }
 
-        public async Task<IList<TipRead>> GetTipsByPlatform(Guid platformId)
+        public async Task<List<TipRead>> GetTipsByPlatform(Guid platformId)
         {
-            var platform = await _repository.GetPlatform(platformId);
-            if (platform == null)
-            {
-                throw new NotFoundException("Platform", platformId);
-            }
-            var tips = await _repository.GetTips(platformId);
-            return tips.Select(tip => new TipRead(tip)).ToList();
+            await CheckIfPlatformExists(platformId);
+            return await _tipService.GetTipsByPlatform(platformId);
         }
         
         private async Task<Platform> CheckIfPlatformExists(Guid id)
