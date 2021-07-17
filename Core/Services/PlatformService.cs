@@ -12,9 +12,11 @@ namespace KnowYourStuffCore.Services
     public class PlatformService : IPlatformService
     {
         private readonly IPlatformRepository _repository;
-        public PlatformService(IPlatformRepository platformRepository)
+        private readonly ITipService _tipService;
+        public PlatformService(IPlatformRepository platformRepository, ITipService tipService)
         {
             _repository = platformRepository;
+            _tipService = tipService;
         }
         
         public async Task<PlatformRead> Create(NewPlatform newPlatform)

@@ -25,7 +25,7 @@ namespace KnowYourStuffWebApi.Controllers
             return Ok(platformReadDtos);
         }
         
-        [HttpGet("{id:guid}", Name = "GetPlatform")]
+        [HttpGet("{id}", Name = "GetPlatform")]
         public async Task<ActionResult<PlatformRead>> GetPlatform(Guid id)
         {
             var platformRead = await _platformService.GetPlatform(id);
