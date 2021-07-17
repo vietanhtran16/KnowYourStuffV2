@@ -63,7 +63,8 @@ namespace KnowYourStuffCore.Services
             {
                 throw new NotFoundException("Platform", platformId);
             }
-            return platform.Tips.Select(tip => new TipRead(tip)).ToList();
+            var tips = await _repository.GetTips(platformId);
+            return tips.Select(tip => new TipRead(tip)).ToList();
         }
         
         private async Task<Platform> CheckIfPlatformExists(Guid id)
