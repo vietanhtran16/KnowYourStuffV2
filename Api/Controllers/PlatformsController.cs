@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KnowYourStuffCore.Dtos;
+using KnowYourStuffCore.Exceptions;
 using KnowYourStuffCore.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

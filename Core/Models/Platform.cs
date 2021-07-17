@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using KnowYourStuffCore.Dtos;
 using KnowYourStuffCore.Exceptions;
 
 namespace KnowYourStuffCore.Models
@@ -52,12 +52,6 @@ namespace KnowYourStuffCore.Models
 
         public void AddTip(Tip tip)
         {
-            tip.Validate();
-            var duplicatedTip = Tips.FirstOrDefault(item => item.Description == tip.Description);
-            if (duplicatedTip != null)
-            {
-                throw new DuplicatedTipException(tip.Snippet);
-            }
             Tips.Add(tip);
             Events.Add(new TipCreatedEvent()
             {
