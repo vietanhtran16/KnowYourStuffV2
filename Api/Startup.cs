@@ -23,8 +23,6 @@ namespace KnowYourStuffWebApi
             services.AddMvcCore(options => options.Filters.Add<ExceptionFilter>());
             services.AddDbConfiguration(Configuration);
             services.AddAppConfiguration();
-            
-            services.AddCors();
 
             services.AddControllers();
             
@@ -49,8 +47,6 @@ namespace KnowYourStuffWebApi
             app.UseRouting();
 
             app.UseAuthorization();
-
-            app.UseCors(configure => configure.AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {
