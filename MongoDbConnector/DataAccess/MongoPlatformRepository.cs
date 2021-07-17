@@ -19,6 +19,12 @@ namespace KnowYourStuffMongoDbConnector.DataAccess
             var database = client.GetDatabase(dbSettings.DatabaseName);
             _platforms = database.GetCollection<PlatformMongoModel>(dbSettings.PlatformsCollectionName);
         }
+        public async Task<Platform> CreatePlatform(Platform newPlatform)
+        {
+             await _platforms.InsertOneAsync(new PlatformMongoModel()
+                {Id = newPlatform.Id, Name = newPlatform.Name, Description = newPlatform.Description});
+             return newPlatform;
+        }
 
         public async Task<List<Platform>> GetPlatforms()
         {

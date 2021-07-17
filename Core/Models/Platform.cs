@@ -13,18 +13,12 @@ namespace KnowYourStuffCore.Models
 
         public IList<Tip> Tips = new List<Tip>();
 
-        public IList<object> Events = new List<object>();
+        public IList<TipCreatedEvent> Events = new List<TipCreatedEvent>();
         public Platform(string name, string description)
         {
             Id = Guid.NewGuid();
             Name = name;
             Description = description;
-            Events.Add(new PlatformCreatedEvent()
-            {
-                Id = Id,
-                Name = Name,
-                Description = Description
-            });
         }
         
         public Platform(Guid id, string name, string description)
