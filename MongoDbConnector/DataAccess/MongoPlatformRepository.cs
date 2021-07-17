@@ -45,10 +45,5 @@ namespace KnowYourStuffMongoDbConnector.DataAccess
                 .FirstOrDefaultAsync();
             return platform?.ToPlatform();
         }
-
-        public Task Save(Platform platform)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

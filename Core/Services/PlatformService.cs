@@ -47,15 +47,8 @@ namespace KnowYourStuffCore.Services
 
         public async Task<TipRead> AddTipToPlatform(NewTip newTip)
         {
-            var platform = await _repository.GetPlatform(newTip.PlatformId);
-            if (platform == null)
-            {
-                throw new NotFoundException("Platform", newTip.PlatformId);
-            }
-            var tip = new Tip(newTip.Description, newTip.Snippet, newTip.PlatformId);
-            platform.AddTip(tip);
-            await _repository.Save(platform);
-            return new TipRead(tip);
+            await CheckIfPlatformExists(newTip.PlatformId);
+            return await _tipService.Create(newTip);
         }
 
         public async Task<List<TipRead>> GetTipsByPlatform(Guid platformId)

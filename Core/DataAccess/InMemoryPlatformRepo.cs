@@ -33,10 +33,5 @@ namespace KnowYourStuffCore.DataAccess
         {
             throw new NotImplementedException();
         }
-
-        public Task Save(Platform platform)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

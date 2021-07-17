@@ -31,7 +31,7 @@ namespace KnowYourStuffSqlConnector
 
         public async Task<Platform> GetPlatform(Guid id)
         {
-            var platformDbModel = await _repositoryContext.Platforms.Include(platformDb => platformDb.Tips).FirstOrDefaultAsync(platformDb => platformDb.Id == id);
+            var platformDbModel = await _repositoryContext.Platforms.FirstOrDefaultAsync(platformDb => platformDb.Id == id);
             return platformDbModel?.ToPlatform();
         }
 
@@ -39,24 +39,6 @@ namespace KnowYourStuffSqlConnector
         {
             var platformDbModel = await _repositoryContext.Platforms.FirstOrDefaultAsync(platformDb => platformDb.Name == name);
             return platformDbModel?.ToPlatform();
-        }
-
-        public async Task Save(Platform platform)
-        {
-            foreach (var platformEvent in platform.Events)
-            {
-                await Handle(platformEvent);
-            }
-        }
-        
-        private async Task Handle(TipCreatedEvent tipCreatedEvent)
-        {
-            await _repositoryContext.Tips.AddAsync(new TipDbModel()
-            {
-                Id = tipCreatedEvent.Id, Description = tipCreatedEvent.Description, Snippet = tipCreatedEvent.Snippet,
-                PlatformId = tipCreatedEvent.PlatformId
-            });
-            await _repositoryContext.SaveChangesAsync();
         }
     }
 }
