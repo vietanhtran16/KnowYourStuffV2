@@ -19,7 +19,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-    <ProjectReference Include="..\MsSqlConnector\MsSqlConnector.csproj" />
   </ItemGroup>
 
   <ItemGroup>
