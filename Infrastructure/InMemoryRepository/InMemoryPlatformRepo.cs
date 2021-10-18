@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KnowYourStuffCore.Dtos;
 using KnowYourStuffCore.Interfaces;
 using KnowYourStuffCore.Models;
 
-namespace KnowYourStuffCore.DataAccess
+namespace Infrastructure.InMemoryRepository
 {
     public class InMemoryPlatformRepo : IPlatformRepository
     {
