@@ -33,31 +33,31 @@ namespace KnowYourStuffCore.Services
             return new PlatformRead(platform);
         }
 
-        public async Task<List<PlatformRead>> GetPlatforms()
+        public async Task<IEnumerable<PlatformRead>> GetPlatforms()
         {
             var platforms = await _repository.GetPlatforms();
-            return platforms.Select(platform => new PlatformRead(platform)).ToList();
+            return platforms.Select(platform => new PlatformRead(platform));
         }
 
         public async Task<PlatformRead> GetPlatform(Guid id)
         {
-            var platform = await CheckIfPlatformExists(id);
+            var platform = await FindPlatform(id);
             return new PlatformRead(platform);
         }
 
         public async Task<TipRead> AddTipToPlatform(NewTip newTip)
         {
-            await CheckIfPlatformExists(newTip.PlatformId);
+            await FindPlatform(newTip.PlatformId);
             return await _tipService.Create(newTip);
         }
 
-        public async Task<List<TipRead>> GetTipsByPlatform(Guid platformId)
+        public async Task<IEnumerable<TipRead>> GetTipsByPlatform(Guid platformId)
         {
-            await CheckIfPlatformExists(platformId);
+            await FindPlatform(platformId);
             return await _tipService.GetTipsByPlatform(platformId);
         }
         
-        private async Task<Platform> CheckIfPlatformExists(Guid id)
+        private async Task<Platform> FindPlatform(Guid id)
         {
             var platform = await _repository.GetPlatform(id);
             if (platform == null)

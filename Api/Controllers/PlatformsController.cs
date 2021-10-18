@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KnowYourStuffCore.Dtos;
-using KnowYourStuffCore.Exceptions;
 using KnowYourStuffCore.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,7 +39,7 @@ namespace KnowYourStuffWebApi.Controllers
         }
 
         [HttpGet("{platformId}/Tips")]
-        public async Task<ActionResult<List<TipRead>>> GetTipsByPlatform(Guid platformId)
+        public async Task<IEnumerable<TipRead>> GetTipsByPlatform(Guid platformId)
         {
             var tipsRead = await _platformService.GetTipsByPlatform(platformId);
             return tipsRead;

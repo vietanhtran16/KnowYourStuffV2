@@ -8,6 +8,6 @@ namespace KnowYourStuffCore.Interfaces
     public interface ITipRepository
     {
         Task<Tip> Create(Tip newTip);
-        Task<List<Tip>> GetTipsByPlatform(Guid id);
+        Task<IEnumerable<Tip>> GetTipsByPlatform(Guid id);
     }
 }

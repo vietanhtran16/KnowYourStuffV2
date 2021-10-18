@@ -22,10 +22,10 @@ namespace KnowYourStuffCore.Services
             return new TipRead(createdTip);
         }
 
-        public async Task<List<TipRead>> GetTipsByPlatform(Guid platformId)
+        public async Task<IEnumerable<TipRead>> GetTipsByPlatform(Guid platformId)
         {
             var tips = await _repository.GetTipsByPlatform(platformId);
-            return tips.Select(tip => new TipRead(tip)).ToList();
+            return tips.Select(tip => new TipRead(tip));
         }
     }
 }

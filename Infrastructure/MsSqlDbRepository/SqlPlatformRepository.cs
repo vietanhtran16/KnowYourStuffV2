@@ -24,9 +24,9 @@ namespace Infrastructure.MsSqlDbRepository
             return newPlatform;
         }
 
-        public Task<List<Platform>> GetPlatforms()
+        public async Task<IEnumerable<Platform>> GetPlatforms()
         {
-            return _repositoryContext.Platforms.Select(platformDb => platformDb.ToPlatform()).ToListAsync();
+            return await _repositoryContext.Platforms.Select(platformDb => platformDb.ToPlatform()).ToListAsync();
         }
 
         public async Task<Platform> GetPlatform(Guid id)

@@ -24,10 +24,10 @@ namespace Infrastructure.MsSqlDbRepository
             return newTip;
         }
 
-        public async Task<List<Tip>> GetTipsByPlatform(Guid id)
+        public async Task<IEnumerable<Tip>> GetTipsByPlatform(Guid id)
         {
             var tips = await _repositoryContext.Tips.Where(tip => tip.PlatformId == id).ToListAsync();
-            return tips.Select(tip => new Tip(tip.Id, tip.Description, tip.Snippet, tip.PlatformId)).ToList();
+            return tips.Select(tip => new Tip(tip.Id, tip.Description, tip.Snippet, tip.PlatformId));
         }
     }
 }

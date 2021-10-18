@@ -10,7 +10,7 @@ namespace KnowYourStuffCore.Interfaces
     public interface IPlatformRepository
     {
         Task<Platform> CreatePlatform(Platform newPlatform);
-        Task<List<Platform>> GetPlatforms();
+        Task<IEnumerable<Platform>> GetPlatforms();
         Task<Platform> GetPlatform(Guid id);
         Task<Platform> GetPlatform(string name);
     }

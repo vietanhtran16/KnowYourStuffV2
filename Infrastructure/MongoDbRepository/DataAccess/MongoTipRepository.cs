@@ -30,11 +30,11 @@ namespace Infrastructure.MongoDbRepository.DataAccess
             return newTip;
         }
 
-        public async Task<List<Tip>> GetTipsByPlatform(Guid id)
+        public async Task<IEnumerable<Tip>> GetTipsByPlatform(Guid id)
         {
             var filter = Builders<TipMongoModel>.Filter.Eq(nameof(TipMongoModel.PlatformId), id);
             var tips = await _tips.FindAsync(filter);
-            return tips.ToList().Select(tip => new Tip(tip.Id, tip.Description, tip.Snippet, tip.PlatformId)).ToList();
+            return tips.ToList().Select(tip => new Tip(tip.Id, tip.Description, tip.Snippet, tip.PlatformId));
         }
     }
 }

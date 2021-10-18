@@ -9,7 +9,7 @@ namespace KnowYourStuffCore.DataAccess
 {
     public class InMemoryPlatformRepo : IPlatformRepository
     {
-        private readonly List<Platform> _platforms = new List<Platform>()
+        private readonly IEnumerable<Platform> _platforms = new List<Platform>()
         {
             new Platform("node", "Javascript"),
             new Platform("docker", "Container"),
@@ -19,7 +19,7 @@ namespace KnowYourStuffCore.DataAccess
             return Task.FromResult(newPlatform);
         }
 
-        public Task<List<Platform>> GetPlatforms()
+        public Task<IEnumerable<Platform>> GetPlatforms()
         {
             return Task.FromResult(_platforms);
         }

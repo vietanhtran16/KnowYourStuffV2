@@ -26,10 +26,10 @@ namespace Infrastructure.MongoDbRepository.DataAccess
              return newPlatform;
         }
 
-        public async Task<List<Platform>> GetPlatforms()
+        public async Task<IEnumerable<Platform>> GetPlatforms()
         {
             var platforms = await _platforms.Find(platform => true).ToListAsync();
-            return platforms.Select(platform => new Platform(platform.Id, platform.Name, platform.Description)).ToList();
+            return platforms.Select(platform => new Platform(platform.Id, platform.Name, platform.Description));
         }
 
         public async Task<Platform> GetPlatform(Guid id)
