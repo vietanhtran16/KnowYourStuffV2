@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using KnowYourStuffCore.Models;
 
-namespace KnowYourStuffSqlConnector.DbModels
+namespace Infrastructure.MsSqlDbRepository.DbModels
 {
     public class PlatformDbModel
     {

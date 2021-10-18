@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Infrastructure.MongoDbRepository.DbModels;
 using KnowYourStuffCore.Interfaces;
 using KnowYourStuffCore.Models;
-using KnowYourStuffMongoDbConnector.DbModels;
 using MongoDB.Driver;
 
-namespace KnowYourStuffMongoDbConnector.DataAccess
+namespace Infrastructure.MongoDbRepository.DataAccess
 {
     public class MongoPlatformRepository : IPlatformRepository
     {

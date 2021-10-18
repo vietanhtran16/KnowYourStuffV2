@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
 using KnowYourStuffCore.Models;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace KnowYourStuffMongoDbConnector.DbModels
+namespace Infrastructure.MongoDbRepository.DbModels
 {
     [BsonIgnoreExtraElements]
     public class PlatformMongoModel

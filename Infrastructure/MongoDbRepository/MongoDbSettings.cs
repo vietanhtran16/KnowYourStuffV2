@@ -1,4 +1,4 @@
-namespace KnowYourStuffMongoDbConnector
+namespace Infrastructure.MongoDbRepository
 {
     public class MongoDbSettings
     {

@@ -1,7 +1,7 @@
 using System;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace KnowYourStuffMongoDbConnector.DbModels
+namespace Infrastructure.MongoDbRepository.DbModels
 {
     public class TipMongoModel
     {

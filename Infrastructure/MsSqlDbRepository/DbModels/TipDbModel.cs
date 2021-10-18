@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace KnowYourStuffSqlConnector.DbModels
+namespace Infrastructure.MsSqlDbRepository.DbModels
 {
     [Table("Tips")]
     public class TipDbModel

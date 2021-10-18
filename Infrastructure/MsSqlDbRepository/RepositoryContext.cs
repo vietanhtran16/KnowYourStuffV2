@@ -1,7 +1,7 @@
-﻿using KnowYourStuffSqlConnector.DbModels;
+﻿using Infrastructure.MsSqlDbRepository.DbModels;
 using Microsoft.EntityFrameworkCore;
 
-namespace KnowYourStuffSqlConnector
+namespace Infrastructure.MsSqlDbRepository
 {
     public class RepositoryContext : DbContext 
     {

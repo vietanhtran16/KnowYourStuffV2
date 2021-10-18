@@ -1,8 +1,8 @@
+using Infrastructure.MongoDbRepository;
+using Infrastructure.MongoDbRepository.DataAccess;
+using Infrastructure.MsSqlDbRepository;
 using KnowYourStuffCore.Interfaces;
 using KnowYourStuffCore.Services;
-using KnowYourStuffMongoDbConnector;
-using KnowYourStuffMongoDbConnector.DataAccess;
-using KnowYourStuffSqlConnector;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

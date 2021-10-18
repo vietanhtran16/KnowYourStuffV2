@@ -2,13 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KnowYourStuffCore.Exceptions;
+using Infrastructure.MsSqlDbRepository.DbModels;
 using KnowYourStuffCore.Interfaces;
 using KnowYourStuffCore.Models;
-using KnowYourStuffSqlConnector.DbModels;
 using Microsoft.EntityFrameworkCore;
 
-namespace KnowYourStuffSqlConnector
+namespace Infrastructure.MsSqlDbRepository
 {
     public class SqlTipRepository : ITipRepository
     {
