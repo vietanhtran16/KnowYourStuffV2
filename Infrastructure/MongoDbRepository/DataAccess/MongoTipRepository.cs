@@ -17,7 +17,7 @@ namespace Infrastructure.MongoDbRepository.DataAccess
             var connectionString = $"mongodb://{dbSettings.User}:{dbSettings.Password}@{dbSettings.Host}:{dbSettings.Port}";
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase(dbSettings.DatabaseName);
-            _tips = database.GetCollection<TipMongoModel>(dbSettings.TipsCollectionName);
+            _tips = database.GetCollection<TipMongoModel>("Tips");
         }
         
         public async Task<Tip> Create(Tip newTip)

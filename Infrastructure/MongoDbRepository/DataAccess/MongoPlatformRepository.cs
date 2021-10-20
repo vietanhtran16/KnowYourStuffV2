@@ -17,7 +17,7 @@ namespace Infrastructure.MongoDbRepository.DataAccess
             var connectionString = $"mongodb://{dbSettings.User}:{dbSettings.Password}@{dbSettings.Host}:{dbSettings.Port}";
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase(dbSettings.DatabaseName);
-            _platforms = database.GetCollection<PlatformMongoModel>(dbSettings.PlatformsCollectionName);
+            _platforms = database.GetCollection<PlatformMongoModel>("Platforms");
         }
         public async Task<Platform> CreatePlatform(Platform newPlatform)
         {
